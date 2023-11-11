@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Multi-Modality Aphasia Therapy</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0px;
+      height: 100%;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    @media screen and (orientation: landscape) {
+      #rotate-device-warning {
+        display: none;
+      }
+    }
+
+    @media screen and (orientation: portrait) {
+      #rotate-device-warning {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        width: 100vw;
+        height: 100vh;
+        background: #dde4f5;
+        background-image: url('images/orientation_black.png');
+        background-repeat: no-repeat;
+        background-size: 80%;
+        background-color: #dde4f5;
+        background-position: center;
+        scale: inherit;
+        overflow: hidden;
+      }
+
+      #warning-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+        width: 100%;
+        z-index: 1000;
+      }
+
+      html,
+      body {
+        overflow: hidden;
+        scale: 1;
+        scrollbar-width: 0;
+      }
+
+      body {
+        position: relative;
+      }
+    }
+
+    /* Style the header */
+    .header {
+      padding: 30px;
+      text-align: center;
+      font-size: 35px;
+    }
+
+    /* Container for flexboxes */
+    .row {
+      display: -webkit-flex;
+      display: flex;
+    }
+
+    /* Create three equal columns that sits next to each other */
+    .column {
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      flex: 1;
+      padding: 10px;
+      align-self: center;
+    }
+
+    /* Style the footer */
+    .footer {
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media (max-width: 400px) {
+      .row {
+        -webkit-flex-direction: column;
+        flex-direction: column;
+      }
+    }
+
+    body {
+      background-image: url('images/settings/Bg.jpg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #dde4f5;
+      background-position: center;
+    }
+
+    .container {
+      position: cover;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .container .btn {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      background-color: #555;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 20px;
+      text-align: center;
+    }
+
+    input.rounded {
+      border: 3px solid #6e778e;
+      -moz-border-radius: 30px;
+      -webkit-border-radius: 30px;
+      border-radius: 30px;
+      font-size: 30px;
+      padding: 10px 7px;
+      outline: 0;
+      -webkit-appearance: none;
+      text-align: center;
+
+    }
+
+    input.rounded:focus {
+      border-color: #339933;
+    }
+  </style>
+</head>
+
+<body>
+  <span id="rotate-device-warning">
+
+  </span>
+  <div class="row">
+
+    <div class="column">
+      <input type="image" onmouseover="backOver(this)" onmouseout="backOut(this)" onclick="location.href='mainmenu.html';" id="backbtn"
+        src="images/settings/settings_button.png" />
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+  </div>
+
+  <div class="header">
+    <img src="images/settings/title.png" alt="title">
+  </div>
+
+  <div class="row">
+
+    <div class="column">
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="column">
+
+    </div>
+    <div class="column">
+
+    </div>
+    <div style="text-align:center" class="column">
+
+      <img src="images/settings/Select_Game.png" alt="title">
+    </div>
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+  </div>
+
+
+
+  <div class="row">
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="image" onmouseover="pc2Over(this)" onmouseout="pc2Out(this)" onclick="playercount2()" id="pc2" src="images/settings/P2_select.png" />
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="image" onmouseover="pc3Over(this)" onmouseout="pc3Out(this)" onclick="playercount3()" id="pc3" src="images/settings/P3.png" />
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="image" onmouseover="pc4Over(this)" onmouseout="pc4Out(this)" onclick="playercount4()" id="pc4" src="images/settings/P4.png" />
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+  </div>
+
+  <div class="row">
+
+    <div class="column">
+
+    </div>
+    <div class="column">
+
+    </div>
+    <div style="text-align:center" class="column">
+
+      <img src="images/settings/Type_Player_Names.png" alt="title">
+    </div>
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+  </div>
+
+  <div class="row" id="textbox1">
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div style="text-align:center" class="column">
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p1text" onchange="updateplayer1(this.value)">
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p2text" onchange="updateplayer2(this.value)">
+    </div>
+
+    <div class="column">
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+  </div>
+
+  <div class="row" id="textbox2">
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div style="text-align:center" class="column">
+
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p3text" onchange="updateplayer1(this.value)">
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p4text" onchange="updateplayer2(this.value)">
+    </div>
+
+    <div class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p5text" onchange="updateplayer3(this.value)">
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+  </div>
+
+  <div class="row" id="textbox3">
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p6text" onchange="updateplayer1(this.value)">
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p7text" onchange="updateplayer2(this.value)">
+    </div>
+
+    <div style="text-align:center" class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p8text" onchange="updateplayer3(this.value)">
+    </div>
+
+    <div class="column">
+      <input type="text" class="rounded" size="10" style="color: #6e778e;" id="p9text" onchange="updateplayer4(this.value)">
+    </div>
+
+    <div class="column">
+
+    </div>
+
+    <div class="column">
+
+    </div>
+
+  </div>
+
+  <div class="container">
+
+    <div class="row">
+
+      <div class="column">
+
+      </div>
+      <div class="column">
+
+      </div>
+      <div style="text-align:center" class="column">
+
+        <img src="images/settings/space.png" alt="title">
+      </div>
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+    </div>
+
+
+    <div class="row">
+
+      <div class="column">
+
+      </div>
+      <div class="column">
+
+      </div>
+      <div style="text-align:center" class="column">
+
+        <img src="images/settings/card_set.png" alt="title">
+      </div>
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+        <input type="image" onmouseover="easyOver(this)" onmouseout="easyOut(this)" onclick="easy()" id="easyimg" src="images/settings/Easy_select.png" />
+      </div>
+
+      <div class="column">
+        <input type="image" onmouseover="modeOver(this)" onmouseout="modeOut(this)" onclick="moderate()" id="modeimg" src="images/settings/Moderate.png" />
+      </div>
+
+      <div class="column">
+        <input type="image" onmouseover="hardOver(this)" onmouseout="hardOut(this)" onclick="hard()" id="hardimg" src="images/settings/Hard.png" />
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <script>
+    function updateplayer1(val) {
+      sessionStorage.setItem("playername1", val);
+    }
+
+    function updateplayer2(val) {
+      sessionStorage.setItem("playername2", val);
+    }
+
+    function updateplayer3(val) {
+      sessionStorage.setItem("playername3", val);
+    }
+
+    function updateplayer4(val) {
+      sessionStorage.setItem("playername4", val);
+    }
+
+    window.onload = function () {
+	  var p1 = sessionStorage.getItem("playername1");
+	  var p2 = sessionStorage.getItem("playername2");
+	  var p3 = sessionStorage.getItem("playername3");
+	  var p4 = sessionStorage.getItem("playername4");
+	  const pc = sessionStorage.getItem("playercount");
+	  const df = sessionStorage.getItem("difficulty");
+	  document.getElementById("p1text").value = p1;
+	  document.getElementById("p2text").value = p2;
+	  document.getElementById("p3text").value = p1;
+	  document.getElementById("p4text").value = p2;
+	  document.getElementById("p5text").value = p3;
+	  document.getElementById("p6text").value = p1;
+	  document.getElementById("p7text").value = p2;
+	  document.getElementById("p8text").value = p3;	  
+	  document.getElementById("p9text").value = p4;	  
+    document.body.style.transform = 'scale(0.8)';
+		if(pc =="2")
+	{
+	playercount2();
+	}
+		if(pc =="3")
+	{
+	playercount3();
+	}
+		if(pc =="4")
+	{
+	playercount4();
+	}
+		if(df =="easy")
+	{
+	easy();
+	}
+		if(df =="moderate")
+	{
+	moderate();
+	}
+		if(df =="hard")
+	{
+	hard();
+	}
+	
+    };
+	
+
+	
+
+    function playercount2() {
+      document.getElementById("pc2").src = "images/settings/P2_select.png";
+      document.getElementById("pc3").src = "images/settings/P3.png";
+      document.getElementById("pc4").src = "images/settings/P4.png";
+      sessionStorage.setItem("playercount", "2");
+      document.getElementById("textbox1").style.display = "";
+      document.getElementById("textbox2").style.display = "none";
+      document.getElementById("textbox3").style.display = "none";
+    }
+
+    function playercount3() {
+      document.getElementById("pc2").src = "images/settings/P2.png";
+      document.getElementById("pc3").src = "images/settings/P3_select.png";
+      document.getElementById("pc4").src = "images/settings/P4.png";
+      sessionStorage.setItem("playercount", "3");
+      document.getElementById("textbox1").style.display = "none";
+      document.getElementById("textbox2").style.display = "";
+      document.getElementById("textbox3").style.display = "none";
+    }
+
+    function playercount4() {
+      document.getElementById("pc2").src = "images/settings/P2.png";
+      document.getElementById("pc3").src = "images/settings/P3.png";
+      document.getElementById("pc4").src = "images/settings/P4_select.png";
+      sessionStorage.setItem("playercount", "4");
+      document.getElementById("textbox1").style.display = "none";
+      document.getElementById("textbox2").style.display = "none";
+      document.getElementById("textbox3").style.display = "";
+    }
+
+    function easy() {
+      document.getElementById("easyimg").src = "images/settings/Easy_select.png";
+      document.getElementById("modeimg").src = "images/settings/Moderate.png";
+      document.getElementById("hardimg").src = "images/settings/Hard.png";
+      sessionStorage.setItem("difficulty", "easy");
+    }
+
+    function moderate() {
+      document.getElementById("easyimg").src = "images/settings/Easy.png";
+      document.getElementById("modeimg").src = "images/settings/Moderate_select.png";
+      document.getElementById("hardimg").src = "images/settings/Hard.png";
+      sessionStorage.setItem("difficulty", "moderate");
+    }
+
+    function hard() {
+      document.getElementById("easyimg").src = "images/settings/Easy.png";
+      document.getElementById("modeimg").src = "images/settings/Moderate.png";
+      document.getElementById("hardimg").src = "images/settings/Hard_select.png";
+      sessionStorage.setItem("difficulty", "hard");
+    }
+	
+	
+	function pc2Over(x) {
+	document.getElementById("pc2").src = "images/settings/P2_select.png";  
+	}
+
+	function pc2Out(x) {
+	const cs = sessionStorage.getItem("playercount");
+	if(cs =="2")
+	{
+    document.getElementById("pc2").src = "images/settings/P2_select.png";  
+	}
+	else{
+	document.getElementById("pc2").src = "images/settings/P2.png"; 
+	}
+	}	
+	
+	
+	function pc3Over(x) {
+	document.getElementById("pc3").src = "images/settings/P3_select.png";  
+	}
+
+	function pc3Out(x) {
+	const cs = sessionStorage.getItem("playercount");
+	if(cs =="3")
+	{
+    document.getElementById("pc3").src = "images/settings/P3_select.png";  
+	}
+	else{
+	document.getElementById("pc3").src = "images/settings/P3.png"; 
+	}
+	}
+	
+	function pc4Over(x) {
+	document.getElementById("pc4").src = "images/settings/P4_select.png";  
+	}
+
+	function pc4Out(x) {
+	const cs = sessionStorage.getItem("playercount");
+	if(cs =="4")
+	{
+    document.getElementById("pc4").src = "images/settings/P4_select.png";  
+	}
+	else{
+	document.getElementById("pc4").src = "images/settings/P4.png"; 
+	}
+	}
+	
+	
+	function easyOver(x) {
+	document.getElementById("easyimg").src = "images/settings/Easy_select.png";  
+	}
+
+	function easyOut(x) {
+	const cs = sessionStorage.getItem("difficulty");
+	if(cs =="easy")
+	{
+    document.getElementById("easyimg").src = "images/settings/Easy_select.png";  
+	}
+	else{
+	document.getElementById("easyimg").src = "images/settings/Easy.png"; 
+	}
+	}
+	
+	function modeOver(x) {
+	document.getElementById("modeimg").src = "images/settings/Moderate_select.png";  
+	}
+
+	function modeOut(x) {
+	const cs = sessionStorage.getItem("difficulty");
+	if(cs =="moderate")
+	{
+    document.getElementById("modeimg").src = "images/settings/Moderate_select.png";  
+	}
+	else{
+	document.getElementById("modeimg").src = "images/settings/Moderate.png"; 
+	}
+	}
+	
+	function hardOver(x) {
+	document.getElementById("hardimg").src = "images/settings/Hard_select.png";  
+	}
+
+	function hardOut(x) {
+	const cs = sessionStorage.getItem("difficulty");
+	if(cs =="hard")
+	{
+    document.getElementById("hardimg").src = "images/settings/Hard_select.png";  
+	}
+	else{
+	document.getElementById("hardimg").src = "images/settings/Hard.png"; 
+	}
+	}
+	
+	function backOver(x) {
+	document.getElementById("backbtn").src = "images/settings/settings_button_over.png";
+	}
+
+	function backOut(x) {
+	document.getElementById("backbtn").src = "images/settings/settings_button.png";
+	}
+	
+	
+  </script>
+
+</body>
+
+</html>

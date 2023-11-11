@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <script type="text/javascript" src="settings/gameconfig.json"></script>
+
+  <script type="text/javascript">
+
+let indexArr20 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19]
+let indexArr16 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15]
+let indexArr12 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+let indexArr8 = [0, 1, 2, 3, 4, 5, 6, 7]
+let indexArraymain=[]
+
+loadcardarry();
+
+function loadcardarry()
+{
+var nouna = JSON.parse(EasynounssetA);
+if(nouna.length == 8)
+{
+indexArraymain = shuffle(indexArr8)
+
+}
+if(nouna.length == 12)
+{
+indexArraymain = shuffle(indexArr12)
+
+}
+if(nouna.length == 16)
+{
+indexArraymain = shuffle(indexArr16)
+
+}
+if(nouna.length == 20)
+{
+indexArraymain = shuffle(indexArr20)
+
+}
+
+loadcardset();
+}
+
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+}
+  
+  if ("playercount" in localStorage) {
+  
+  
+	  if("playercount" in sessionStorage)
+	  {
+	  localStorage.setItem("playercount", sessionStorage.getItem("playercount"));
+      localStorage.setItem("difficulty", sessionStorage.getItem("difficulty"));
+      localStorage.setItem("playername1", sessionStorage.getItem("playername1"));
+      localStorage.setItem("playername2", sessionStorage.getItem("playername2"));
+      localStorage.setItem("playername3", sessionStorage.getItem("playername3"));
+      localStorage.setItem("playername4", sessionStorage.getItem("playername4"));
+      localStorage.setItem("cardcount",  sessionStorage.getItem("cardcount"));
+	  }
+	  
+	  sessionStorage.setItem("playercount", localStorage.getItem("playercount"));
+      sessionStorage.setItem("difficulty", localStorage.getItem("difficulty"));
+      sessionStorage.setItem("playername1", localStorage.getItem("playername1"));
+      sessionStorage.setItem("playername2", localStorage.getItem("playername2"));
+      sessionStorage.setItem("playername3", localStorage.getItem("playername3"));
+      sessionStorage.setItem("playername4", localStorage.getItem("playername4"));
+      sessionStorage.setItem("cardcount",  localStorage.getItem("cardcount"));
+	  sessionStorage.setItem("cardset", localStorage.getItem("cardset"));
+
+    }
+	else
+	{ 
+      localStorage.setItem("playercount", "2");
+      localStorage.setItem("difficulty", "easy");
+      localStorage.setItem("playername1", "player1");
+      localStorage.setItem("playername2", "player2");
+      localStorage.setItem("playername3", "player3");
+      localStorage.setItem("playername4", "player4");
+      localStorage.setItem("cardcount", "12");
+	  
+	  sessionStorage.setItem("playercount", "2");
+      sessionStorage.setItem("difficulty", "easy");
+      sessionStorage.setItem("playername1", "player1");
+      sessionStorage.setItem("playername2", "player2");
+      sessionStorage.setItem("playername3", "player3");
+      sessionStorage.setItem("playername4", "player4");
+      sessionStorage.setItem("cardcount", "12");
+	  load_Nouns_A();
+    }
+	
+	
+  
+    var dif = sessionStorage.getItem("difficulty");	
+
+    function loadcardset() {
+	
+	sessionStorage.setItem("cardset", localStorage.getItem("cardset"));
+	const cs = sessionStorage.getItem("cardset");
+    if(cs =="nouns_A")
+	{
+	load_Nouns_A();
+	}
+	
+	if(cs =="nouns_B")
+	{
+	load_Nouns_B();
+	}
+	
+	if(cs =="nouns_C")
+	{
+	load_Nouns_C();
+	}
+	
+	if(cs =="verbs_D")
+	{
+	load_Verbs_D();
+	}
+	
+	if(cs =="verbs_E")
+	{
+	load_Verbs_E();
+	}
+
+    }
+	
+	
+	function shaffelcards(){
+	const cs = localStorage.getItem("cardset");
+	if(cs =="nouns_A")
+	{
+	load_Nouns_A();
+	}
+	
+	if(cs =="nouns_B")
+	{
+	load_Nouns_B();
+	}
+	
+	if(cs =="nouns_C")
+	{
+	load_Nouns_C();
+	}
+	
+	if(cs =="verbs_D")
+	{
+	load_Verbs_D();
+	}
+	
+	if(cs =="verbs_E")
+	{
+	load_Verbs_E();
+	}
+	}
+		
+	
+	function load_card() {
+        var nouna = JSON.parse(cardcount);       
+          sessionStorage.setItem("cardcount" , nouna[0].cards);
+        }	
+	
+	
+	function load_Nouns_A() {
+	
+	sessionStorage.setItem("sentence", "noun");
+	sessionStorage.setItem("cardset", "nouns_A");
+	localStorage.setItem("sentence", "noun");
+	localStorage.setItem("cardset", "nouns_A");
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasynounssetA);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModeratenounssetA);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardnounssetA);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}		
+		
+	}
+	
+	function load_Nouns_B() {
+	
+	sessionStorage.setItem("sentence", "noun");
+	sessionStorage.setItem("cardset", "nouns_B");
+	localStorage.setItem("sentence", "noun");
+	localStorage.setItem("cardset", "nouns_B");
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasynounssetB);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModeratenounssetB);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardnounssetB);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}	
+	
+	}
+	
+	function load_Nouns_C() {
+	
+	sessionStorage.setItem("sentence", "noun");
+	sessionStorage.setItem("cardset", "nouns_C");
+	localStorage.setItem("sentence", "noun");
+	localStorage.setItem("cardset", "nouns_C");
+	
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasynounssetC);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModeratenounssetC);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardnounssetC);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}	
+		
+	
+	}
+	
+	function load_Verbs_D() {
+	
+	sessionStorage.setItem("sentence", "verb");
+	sessionStorage.setItem("cardset", "verbs_D");
+	localStorage.setItem("sentence", "verb");
+	localStorage.setItem("cardset", "verbs_D");
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasyverbssetD);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModerateverbssetD);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardverbssetD);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}	
+			
+	
+	}
+	
+
+    function load_Verbs_E() {
+	
+	sessionStorage.setItem("sentence", "verb");
+	sessionStorage.setItem("cardset", "verbs_E");
+	localStorage.setItem("sentence", "verb");
+	localStorage.setItem("cardset", "verbs_E");
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasyverbssetE);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModerateverbssetE);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardverbssetE);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArraymain[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArraymain[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArraymain[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArraymain[i]].name);		
+		}
+		}	
+			
+		  
+	  
+    }
+	
+	
+	
+  </script>
+
+
+    <title>Multi-Modality Aphasia Therapy Guess the Card</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/guess_style.css">
+    <script src="script/guessscript.js" defer></script>
+
+    <style>
+        @font-face {
+            font-family: "mainfont";
+            src: url("font/GreycliffCF-ExtraBold.ttf");
+        }
+
+        body {
+            background-image: url('images/BgGuess.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        @media screen and (orientation: landscape) {
+            #rotate-device-warning {
+                display: none;
+            }
+        }
+
+        @media screen and (orientation: portrait) {
+            #rotate-device-warning {
+                position: fixed;
+                top: 0;
+                left: 0;
+                z-index: 999;
+                width: 100%;
+                height: 100vh;
+                background-size: 80%;
+                background: #dde4f5 url(images/orientation_black.png);
+                scale: inherit;
+                overflow: hidden;
+                background-position: center center;
+                background-size: contain;
+                background-repeat: no-repeat;
+            }
+
+            #warning-image {
+                 top: 50%;
+                left: 50%;
+                transform: translate(-50%);
+                width: 100vw;
+                z-index: 1000;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .parentin {
+                grid-column-gap: 5px;
+                grid-row-gap: 5px;
+                padding: 5px 10px 5px 10px;
+            }
+        }
+    </style>
+
+<body onresize="windowsize()">
+
+<span id="rotate-device-warning"></span>
+
+<div id="myModal" class="modal">
+
+    <div class="modal-content">
+<!--        <span class="close">&times;</span>-->
+        <img src='images/close.png' style="display: block;float: right;" class="close" alt="close botton"/>
+        <img style='height: 10vw; width: 13vw; margin: 30px 10px 10px 8%;' align="center" src='images/trophy.png'/>
+        <h1 class="winfont"> YOU WON! </h1>
+        <h1 id="playername" class="winnerfont"> player name </h1>
+        <button onclick="reset()" class="resetbtn"><h1 class="restbtnfont"> Restart </h1></button>
+    </div>
+</div>
+
+
+<div id="sentence" class="sentencemodal">
+    <div class="sentencemodal-content">
+        <img src='images/close.png' style="display: block;float: right;" onclick="closecontent()" alt="close botton"/>
+<!--        <span onclick="closecontent()" class="close">&times;</span>-->
+        <img id="sentenceimg" style='height: auto; width: 90%' align="center" src='images/Noun/noun1.png'/>
+    </div>
+</div>
+
+<div id="cues" class="cuesemodal">
+    <div class="cuese-content">
+        <!--    <span onclick="closecues()" class="close">&times;</span>-->
+        <span onclick="closecues()" class="close" style="position: absolute;left: 6%">
+				  <img src='images/close.png' width="100%" alt="close botton"/>
+			</span>
+
+
+        <div class="parent">
+            <div class="div1">
+                <img style='height: 2.6vw; width: 10vw; margin: 30px 10px 10px' src='images/cues_titel.png'/>
+            </div>
+            <div class="div2">
+
+            </div>
+            <div class="div3">
+
+            </div>
+            <div class="div4">
+                <div class="parentin">
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div7"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="1" class="cusescard"
+                            onclick="cuescardselect(0)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div8"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="2" class="cusescard"
+                            onclick="cuescardselect(1)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div9"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="3" class="cusescard"
+                            onclick="cuescardselect(2)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div10"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="4" class="cusescard"
+                            onclick="cuescardselect(3)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div11"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="5" class="cusescard"
+                            onclick="cuescardselect(4)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div12"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="6" class="cusescard"
+                            onclick="cuescardselect(5)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div13"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="7" class="cusescard"
+                            onclick="cuescardselect(6)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div14"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="8" class="cusescard"
+                            onclick="cuescardselect(7)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div15"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="9" class="cusescard"
+                            onclick="cuescardselect(8)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div16"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="10" class="cusescard"
+                            onclick="cuescardselect(9)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div17"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="10" class="cusescard "
+                            onclick="cuescardselect(10)"></div>
+                    <div onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" class="div18"><img
+                            src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="12" class="cusescard"
+                            onclick="cuescardselect(11)"></div>
+                </div>
+            </div>
+            <div class="div5">
+
+            </div>
+            <div class="div6">
+
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+<div id="cueswindow" class="cuesemodalwindow">
+    <div class="cuesewindow-content">
+
+        <!--	<span onclick="closecueswindow()" class="close">&times;</span>-->
+        <span style="float: right;padding: 2%;cursor: pointer" onclick="closecueswindow()">
+                <img src="images/backbutton.png" width="40#" alt="backbutton">
+            </span>
+
+        <div class="cusegrid">
+            <div class="div20">
+                <h1 id="cuesetext" style='display: none;margin-top: 22%;' class="cuesfont"> Sentence </h1>
+                <video id="cuesevideo" loop="true" autoplay="autoplay" muted>
+                    <source src="settings/cardset/nouns/easy_noun_set_a/bed.mp4" type="video/mp4">
+                </video>
+                <img id="cueseimage"
+                     src='settings/cardset/nouns/easy_noun_set_a/bed.jpg'/>
+            </div>
+            <div class="div21">
+                <img id="cueseimageselect"
+                  src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="1" onclick="selecter(0)">
+            </div>
+            <div class="div31">
+                <img onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" id="previusids"
+                     style='height: auto; width: 10vw; margin: 1vw 1vw 1vw' src='images/previous_btn_off.png'
+                     onclick="previuscues()"/>
+                <img onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)" id="nextids"
+                     style='height: auto; width: 10vw; margin: 1vw 1vw 1vw' src='images/next_btn_on.png'
+                     onclick="nextcues()"/>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="parent">
+    <div class="div1">
+
+        <div class="dropdown" style="float:left;">
+            <button class="dropbtn"><h1 class="buttonfont"> Sentence </h1></button>
+            <div class="dropdown-content" style="left:0;">
+                <a onclick="opencontent(1)"><h1 class="buttonfont"> Level 1 </h1></a>
+                <a onclick="opencontent(2)"><h1 class="buttonfont"> Level 2 </h1></a>
+                <a onclick="opencontent(3)"><h1 class="buttonfont"> Level 3 </h1></a>
+                <a onclick="opencontent(4)"><h1 class="buttonfont"> Level 4 </h1></a>
+                <a onclick="opencontent(5)"><h1 class="buttonfont"> Level 5 </h1></a>
+                <a onclick="opencontent(6)"><h1 class="buttonfont"> Level 6 </h1></a>
+            </div>
+        </div>
+        <div class="dropdown" style="float:left;">
+            <button onclick="opencues()" class="dropbtn"><h1 class="buttonfont"> Cues </h1></button>
+        </div>
+        <img style='height: auto; width: 25vw;margin:13px 6px 5px 100px' src='images/Guessthecard_titel.png'/>
+        <h2 style="display: none;" id="app_status">Drag status: </h2>
+
+        <img id="setting" onmouseover="settingOver(this)" onmouseout="settingOut(this)"
+             onclick="location.href='settings.html'" ; style='height: 3.5vw; width: 3.5vw;margin:13px 6px 5px 0px'
+             align="right" src='images/settings_icon.png'/>
+        <img id="Game" onmouseover="gameOver(this)" onmouseout="gameOut(this)" onclick="location.href='mainmenu.html'" ;
+             style='height: 3.5vw; width: 3.5vw;margin:13px 6px 5px 0px' align="right" src='images/Games_icon.png'/>
+        <img id="resetbutton" onmouseover="resetOver(this)" onmouseout="resetOut(this)" onclick="reset()"
+             align="right" src='images/reset.png'/>
+        <img id="resetcardbutton" onmouseover="resetcardover(this)" onmouseout="resetcardout(this)"
+             onclick="resettoken()" align="right"
+             src='images/reset_tokens.png'/>
+    </div>
+    <div class="div2">
+        <div class="playergroup">
+
+            <div id="player1card" class="div22">
+                <h1 id="player1" style="color: #6e788f;" class="playerfont">Player1</h1>
+            </div>
+            <div id="player1cardname" class="div24">
+                <h1 id="player1score" class="playerscorefont">0</h1>
+            </div>
+            <div id="player1cardname" class="div25">
+                <div id="object1" class="objects common_obj" draggable="true">Player1</div>
+            </div>
+            <div id="player1cardname" class="div26">
+                <div id="object2" class="objectssilver common_obj" draggable="true">Player1</div>
+            </div>
+
+
+            <div id="player3card" class="div27" style="margin-top: 10%">
+                <h1 id="player3" style="color: #6e788f;" class="playerfont">Player3</h1>
+            </div>
+            <div id="player3cardname" class="div28">
+                <h1 id="player3score" class="playerscorefont">0</h1>
+            </div>
+            <div id="player1cardname" class="div29">
+                <div id="object5" class="objects common_obj" draggable="true">Player3</div>
+            </div>
+            <div id="player1cardname" class="div30">
+                <div id="object6" class="objectssilver common_obj" draggable="true">Player3</div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="div3">
+        <div class="playergroup">
+            <div id="player2card" class="div22">
+                <h1 id="player2" style="color: #6e788f;" class="playerfont">Player2</h1>
+            </div>
+            <div id="player2cardname" class="div24">
+                <h1 id="player2score" class="playerscorefont">0</h1>
+            </div>
+            <div id="player1cardname" class="div25">
+                <div id="object3" class="objects common_obj" draggable="true">Player2</div>
+            </div>
+            <div id="player1cardname" class="div26">
+                <div id="object4" class="objectssilver common_obj" draggable="true">Player2</div>
+            </div>
+
+            <div id="player4card" class="div27" style="margin-top: 10%">
+                <h1 id="player4" style="color: #6e788f;" class="playerfont">Player4</h1>
+            </div>
+            <div id="player4cardname" class="div28">
+                <h1 id="player4score" class="playerscorefont">0</h1>
+            </div>
+            <div id="player1cardname" class="div29">
+                <div id="object7" class="objects common_obj" draggable="true">Player4</div>
+            </div>
+            <div id="player1cardname" class="div30">
+                <div id="object8" class="objects common_obj" draggable="true">Player4</div>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="div4">
+        <div class="parentin">
+            <div class="div7">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="1" class="upcard clickhandle">
+                <div id="drop_zone1" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div8">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="2" class="upcard clickhandle">
+                <div id="drop_zone2" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div9">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="3" class="upcard clickhandle">
+                <div id="drop_zone3" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div10">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="4" class="upcard clickhandle">
+                <div id="drop_zone4" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div11">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="5" class="upcard clickhandle">
+                <div id="drop_zone5" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div12">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="6" class="upcard clickhandle">
+                <div id="drop_zone6" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div13">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="7" class="upcard clickhandle">
+                <div id="drop_zone7" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div14">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="8" class="upcard clickhandle">
+                <div id="drop_zone8" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div15">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="9" class="upcard clickhandle">
+                <div id="drop_zone9" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div16">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="10"
+                     class="upcard clickhandle">
+                <div id="drop_zone10" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div17">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="10"
+                     class="upcard clickhandle">
+                <div id="drop_zone11" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+            <div class="div18">
+                <img src="settings/cardset/nouns/easy_noun_set_a/bed.png" alt="tile1" id="12"
+                     class="upcard clickhandle">
+                <div id="drop_zone12" class="drop_zone" ondragover="return false">
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="player3card" class="div5">
+        <div class="parentbottom">
+            <img id="flipbtn" onclick="symbolflip()" onmouseover="cardhoverin(this)" onmouseout="cardhoverout(this)"
+                 style='height: auto; width: 8vw; margin: 0vw 27vw 0vw' src='images/go.png'/>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</head>
+</html>

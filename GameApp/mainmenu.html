@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <title>Multi-Modality Aphasia Therapy</title>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0px;
+      height: auto;
+	  
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    .main-layout {
+      aspect-ratio: 2/4;
+      height: 50vh;
+      max-height: 50vh;
+      margin: 0;
+      padding: 3vw;
+
+
+    }
+
+    /* Style the header */
+    .header {
+      padding: 0px;
+      text-align: center;
+    }
+
+    /* Container for flexboxes */
+    .row {
+      display: -webkit-flex;
+      display: flex;
+	  align-self: center;
+    }
+
+    .button {
+      width: 100vw;
+    }
+
+    .button-column {
+      width: 10%;
+    }
+
+    .button-image {
+      width: 100%;
+    }
+
+    @media screen and (orientation: landscape) {
+      #rotate-device-warning {
+        display: none;
+      }
+    }
+
+    @media screen and (orientation: portrait) {
+      #rotate-device-warning {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+        width: 100vw;
+        height: 100vh;
+        background-size: 80%;
+        background: #dde4f5 url('images/orientation_black.png') no-repeat center;
+        scale: inherit;
+        overflow:hidden;
+      }
+
+      #warning-image {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%);
+        width: 100%;
+        z-index: 1000;
+      }
+
+      html,
+      body {
+
+      }
+
+      body {
+
+      }
+    }
+
+    /* Create three equal columns that sits next to each other */
+    .column {
+      -webkit-flex: 1;
+      -ms-flex:1;
+      flex: 1;
+      padding: 10px;
+    }
+
+    /* Style the footer */
+    .footer {
+      padding: 10px;
+      text-align: center;
+    }
+
+    /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+    @media (max-width: 100px) {
+      .row {
+        -webkit-flex-direction: column;
+        flex-direction: column;
+      }
+    }
+
+    body {
+      background-image: url('images/Bg.jpg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #dde4f5;
+      background-position: center;
+    }
+
+    .container {
+      position: cover;
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .container .btn {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      background-color: #555;
+      color: white;
+      font-size: 16px;
+      padding: 12px 24px;
+      border: none;
+      cursor: pointer;
+      border-radius: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MXDZBGF"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <span id="rotate-device-warning"></span>
+  <div class="main-layout">
+
+    <div class="row">
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+        <input type="image" onmouseover="settingOver(this)" onmouseout="settingOut(this)" onclick="location.href='settings.html';" id="setting" src="images/settings_button.png" style="width:4vw"/>
+      </div>
+
+    </div>
+
+    <div class="header">
+      <img src="images/title.png" alt="title" style="width:30vw">
+    </div>
+
+    <div class="row">
+
+      <div class="column">
+
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="column">
+
+      </div>
+      <div class="column">
+
+      </div>
+      <div style="text-align:center" class="column">
+
+        <img src="images/Select_Game.png" alt="title" style="width:10vw">
+      </div>
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+    </div>
+
+
+
+    <div class="row">
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div style="text-align:center" class="column">
+        <input type="image" onmouseover="bingoOver(this)" onmouseout="bingoOut(this)" onclick="location.href='bingo.html'; shaffelcards();" id="bingo" src="images/Bingo.png" style="width:13vw"/>
+      </div>
+
+      <div style="text-align:center" class="column">
+        <input type="image" onmouseover="guessOver(this)" onmouseout="guessOut(this)" onclick="location.href='guessthecard.html'; shaffelcards();" id="guess" src="images/Guess_the_Card.png" style="width:13vw" />
+      </div>
+
+      <div style="text-align:center" class="column">
+        <input type="image" onmouseover="memoryOver(this)" onmouseout="memoryOut(this)" onclick="location.href='memory.html'; shaffelcards();" id="memory" src="images/Memory.png" style="width:13vw" />
+      </div>
+	  
+	  <div style="text-align:center" class="column">
+        <input type="image" onmouseover="snapOver(this)" onmouseout="snapOut(this)" onclick="location.href='snap.html'; shaffelcards();" id="snap" src="images/Snap.png" style="width:13vw" />
+      </div>
+
+      <div class="column">
+
+      </div>
+
+      <div class="column">
+
+      </div>
+
+    </div>
+
+
+    <div class="container">
+
+      <div class="row">
+
+        <div class="column">
+
+        </div>
+        <div class="column">
+
+        </div>
+
+        <div class="column">
+
+        </div>
+
+        <div class="column">
+
+        </div>
+
+      </div>
+
+
+      <div class="row">
+
+        <div class="column">
+
+        </div>
+        <div class="column">
+
+        </div>
+        <div style="text-align:center" class="column">
+
+          <img src="images/card_set.png" alt="title" style="width:10vw">
+        </div>
+        <div class="column">
+
+        </div>
+
+        <div class="column">
+
+        </div>
+
+      </div>
+
+      <div class="row button">
+
+        <div class="column">
+
+        </div>
+
+        <div class="column button-column">
+          <input class="button-image" type="image" onmouseover="nounAover(this)" onmouseout="nounAout(this)" onclick="load_Nouns_A()" id="nounAimg" src="images/Nouns_A_select.png" />
+        </div>
+
+        <div class="column button-column">
+          <input class="button-image" type="image" onmouseover="nounBover(this)" onmouseout="nounBout(this)" onclick="load_Nouns_B()" id="nounBimg" src="images/Nouns_B.png" />
+        </div>
+
+        <div class="column button-column">
+          <input class="button-image" type="image" onmouseover="nounCover(this)" onmouseout="nounCout(this)" onclick="load_Nouns_C()" id="nounCimg" src="images/Nouns_C.png" />
+        </div>
+
+        <div class="column button-column">
+          <input class="button-image" type="image" onmouseover="verbsDover(this)" onmouseout="verbsDout(this)" onclick="load_Verbs_D()" id="verbsDimg" src="images/Verbs_D.png" />
+        </div>
+
+        <div class="column button-column">
+          <input class="button-image" type="image" onmouseover="verbsEover(this)" onmouseout="verbsEout(this)" onclick="load_Verbs_E()" id="verbsEimg" src="images/Verbs_E.png" />
+        </div>
+
+        <div class="column">
+
+        </div>
+
+      </div>
+
+
+    </div>
+  </div>
+
+
+
+
+  <script type="text/javascript" src="settings/gameconfig.json"></script>
+
+  <script type="text/javascript">
+
+let indexArr20 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15,16,17,18,19]
+let indexArr16 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11,12,13,14,15]
+let indexArr12 = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+let indexArr8 = [0, 1, 2, 3, 4, 5, 6, 7]
+let indexArray=[]
+
+loadcardarry();
+
+function loadcardarry()
+{
+var nouna = JSON.parse(EasynounssetA);
+if(nouna.length == 8)
+{
+indexArray = shuffle(indexArr8)
+
+}
+if(nouna.length == 12)
+{
+indexArray = shuffle(indexArr12)
+
+}
+if(nouna.length == 16)
+{
+indexArray = shuffle(indexArr16)
+
+}
+if(nouna.length == 20)
+{
+indexArray = shuffle(indexArr20)
+
+}
+}
+
+function shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+  
+    // While there remain elements to shuffle.
+    while (currentIndex != 0) {
+  
+      // Pick a remaining element.
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex--;
+  
+      // And swap it with the current element.
+      [array[currentIndex], array[randomIndex]] = [
+        array[randomIndex], array[currentIndex]];
+    }
+  
+    return array;
+}
+  
+  if ("playercount" in localStorage) {
+  
+  
+	  if("playercount" in sessionStorage)
+	  {
+	  localStorage.setItem("playercount", sessionStorage.getItem("playercount"));
+      localStorage.setItem("difficulty", sessionStorage.getItem("difficulty"));
+      localStorage.setItem("playername1", sessionStorage.getItem("playername1"));
+      localStorage.setItem("playername2", sessionStorage.getItem("playername2"));
+      localStorage.setItem("playername3", sessionStorage.getItem("playername3"));
+      localStorage.setItem("playername4", sessionStorage.getItem("playername4"));
+      localStorage.setItem("cardcount",  sessionStorage.getItem("cardcount"));
+	  }
+	  
+	  sessionStorage.setItem("playercount", localStorage.getItem("playercount"));
+      sessionStorage.setItem("difficulty", localStorage.getItem("difficulty"));
+      sessionStorage.setItem("playername1", localStorage.getItem("playername1"));
+      sessionStorage.setItem("playername2", localStorage.getItem("playername2"));
+      sessionStorage.setItem("playername3", localStorage.getItem("playername3"));
+      sessionStorage.setItem("playername4", localStorage.getItem("playername4"));
+      sessionStorage.setItem("cardcount",  localStorage.getItem("cardcount"));
+	  sessionStorage.setItem("cardset", localStorage.getItem("cardset"));
+
+    }
+	else
+	{ 
+      localStorage.setItem("playercount", "2");
+      localStorage.setItem("difficulty", "easy");
+      localStorage.setItem("playername1", "player1");
+      localStorage.setItem("playername2", "player2");
+      localStorage.setItem("playername3", "player3");
+      localStorage.setItem("playername4", "player4");
+      localStorage.setItem("cardcount", "12");
+	  
+	  sessionStorage.setItem("playercount", "2");
+      sessionStorage.setItem("difficulty", "easy");
+      sessionStorage.setItem("playername1", "player1");
+      sessionStorage.setItem("playername2", "player2");
+      sessionStorage.setItem("playername3", "player3");
+      sessionStorage.setItem("playername4", "player4");
+      sessionStorage.setItem("cardcount", "12");
+	  load_Nouns_A();
+    }
+	
+	
+  
+    var dif = sessionStorage.getItem("difficulty");	
+    document.body.style.transform = 'scale(0.7)';
+
+    window.onload = function () {
+	sessionStorage.setItem("cardset", localStorage.getItem("cardset"));
+	const cs = sessionStorage.getItem("cardset");
+    if(cs =="nouns_A")
+	{
+	load_Nouns_A();
+	}
+	
+	if(cs =="nouns_B")
+	{
+	load_Nouns_B();
+	}
+	
+	if(cs =="nouns_C")
+	{
+	load_Nouns_C();
+	}
+	
+	if(cs =="verbs_D")
+	{
+	load_Verbs_D();
+	}
+	
+	if(cs =="verbs_E")
+	{
+	load_Verbs_E();
+	}
+    }
+	
+	
+	function shaffelcards(){
+	const cs = localStorage.getItem("cardset");
+	if(cs =="nouns_A")
+	{
+	load_Nouns_A();
+	}
+	
+	if(cs =="nouns_B")
+	{
+	load_Nouns_B();
+	}
+	
+	if(cs =="nouns_C")
+	{
+	load_Nouns_C();
+	}
+	
+	if(cs =="verbs_D")
+	{
+	load_Verbs_D();
+	}
+	
+	if(cs =="verbs_E")
+	{
+	load_Verbs_E();
+	}
+	}
+		
+	
+	function load_card() {
+        var nouna = JSON.parse(cardcount);       
+          sessionStorage.setItem("cardcount" , nouna[0].cards);
+        }	
+	
+	
+	function load_Nouns_A() {
+	
+	sessionStorage.setItem("sentence", "noun");
+	sessionStorage.setItem("cardset", "nouns_A");
+	localStorage.setItem("sentence", "noun");
+	localStorage.setItem("cardset", "nouns_A");
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+        document.getElementById("nounAimg").src = "images/Nouns_A_select.png";
+        document.getElementById("nounBimg").src = "images/Nouns_B.png";
+        document.getElementById("nounCimg").src = "images/Nouns_C.png";
+        document.getElementById("verbsDimg").src = "images/Verbs_D.png";
+        document.getElementById("verbsEimg").src = "images/Verbs_E.png";
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasynounssetA);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModeratenounssetA);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardnounssetA);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}		
+		
+	}
+	
+	function load_Nouns_B() {
+	
+	sessionStorage.setItem("sentence", "noun");
+	sessionStorage.setItem("cardset", "nouns_B");
+	localStorage.setItem("sentence", "noun");
+	localStorage.setItem("cardset", "nouns_B");
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+        document.getElementById("nounAimg").src = "images/Nouns_A.png";
+        document.getElementById("nounBimg").src = "images/Nouns_B_select.png";
+        document.getElementById("nounCimg").src = "images/Nouns_C.png";
+        document.getElementById("verbsDimg").src = "images/Verbs_D.png";
+        document.getElementById("verbsEimg").src = "images/Verbs_E.png";
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasynounssetB);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModeratenounssetB);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardnounssetB);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}	
+	
+	}
+	
+	function load_Nouns_C() {
+	
+	sessionStorage.setItem("sentence", "noun");
+	sessionStorage.setItem("cardset", "nouns_C");
+	localStorage.setItem("sentence", "noun");
+	localStorage.setItem("cardset", "nouns_C");
+	
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+        document.getElementById("nounAimg").src = "images/Nouns_A.png";
+        document.getElementById("nounBimg").src = "images/Nouns_B.png";
+        document.getElementById("nounCimg").src = "images/Nouns_C_select.png";
+        document.getElementById("verbsDimg").src = "images/Verbs_D.png";
+        document.getElementById("verbsEimg").src = "images/Verbs_E.png";
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasynounssetC);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModeratenounssetC);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardnounssetC);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}	
+		
+	
+	}
+	
+	function load_Verbs_D() {
+	
+	sessionStorage.setItem("sentence", "verb");
+	sessionStorage.setItem("cardset", "verbs_D");
+	localStorage.setItem("sentence", "verb");
+	localStorage.setItem("cardset", "verbs_D");
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+        document.getElementById("nounAimg").src = "images/Nouns_A.png";
+        document.getElementById("nounBimg").src = "images/Nouns_B.png";
+        document.getElementById("nounCimg").src = "images/Nouns_C.png";
+        document.getElementById("verbsDimg").src = "images/Verbs_D_select.png";
+        document.getElementById("verbsEimg").src = "images/Verbs_E.png";
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasyverbssetD);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModerateverbssetD);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardverbssetD);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}	
+			
+	
+	}
+	
+
+    function load_Verbs_E() {
+	
+	sessionStorage.setItem("sentence", "verb");
+	sessionStorage.setItem("cardset", "verbs_E");
+	localStorage.setItem("sentence", "verb");
+	localStorage.setItem("cardset", "verbs_E");
+	var cardcount = sessionStorage.getItem("cardcount");
+	var dif = sessionStorage.getItem("difficulty");
+        document.getElementById("nounAimg").src = "images/Nouns_A.png";
+        document.getElementById("nounBimg").src = "images/Nouns_B.png";
+        document.getElementById("nounCimg").src = "images/Nouns_C.png";
+        document.getElementById("verbsDimg").src = "images/Verbs_D.png";
+        document.getElementById("verbsEimg").src = "images/Verbs_E_select.png";
+		
+		if (dif == "easy") {
+        var nouna = JSON.parse(EasyverbssetE);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+		
+		if (dif == "moderate") {
+        var nouna = JSON.parse(ModerateverbssetE);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}
+
+		if (dif == "hard") {
+        var nouna = JSON.parse(HardverbssetE);
+        for (var i = 0; i < nouna.length; i++) {
+          sessionStorage.setItem("card" + i, nouna[indexArray[i]].Image);
+		  sessionStorage.setItem("video" + i, nouna[indexArray[i]].video);
+		  sessionStorage.setItem("drawing" + i, nouna[indexArray[i]].drawing);
+		  sessionStorage.setItem("name" + i, nouna[indexArray[i]].name);		
+		}
+		}	
+			
+		  
+	  
+    }
+	
+	function nounAover(x) {
+	document.getElementById("nounAimg").src = "images/Nouns_A_select.png";  
+	}
+
+	function nounAout(x) {
+	const cs = sessionStorage.getItem("cardset");
+	if(cs =="nouns_A")
+	{
+    document.getElementById("nounAimg").src = "images/Nouns_A_select.png";  
+	}
+	else{
+	document.getElementById("nounAimg").src = "images/Nouns_A.png"; 
+	}
+	}
+
+	function nounBover(x) {
+	document.getElementById("nounBimg").src = "images/Nouns_B_select.png";  
+	}
+
+	function nounBout(x) {
+	const cs = sessionStorage.getItem("cardset");
+	if(cs =="nouns_B")
+	{
+	document.getElementById("nounBimg").src = "images/Nouns_B_select.png";  
+	}
+	else{
+	document.getElementById("nounBimg").src = "images/Nouns_B.png"; 
+	}
+	}
+
+	function nounCover(x) {
+	document.getElementById("nounCimg").src = "images/Nouns_C_select.png";  
+	}
+
+	function nounCout(x) {
+	const cs = sessionStorage.getItem("cardset");
+	if(cs =="nouns_C")
+	{
+	document.getElementById("nounCimg").src = "images/Nouns_C_select.png";  
+	}
+	else{
+	document.getElementById("nounCimg").src = "images/Nouns_C.png"; 
+	}
+	}
+
+	function verbsDover(x) {
+	document.getElementById("verbsDimg").src = "images/Verbs_D_select.png";  
+	}
+
+	function verbsDout(x) {
+	const cs = sessionStorage.getItem("cardset");
+	if(cs =="verbs_D")
+	{
+	document.getElementById("verbsDimg").src = "images/Verbs_D_select.png";  
+	}
+	else{
+	document.getElementById("verbsDimg").src = "images/Verbs_D.png"; 
+	}
+	}
+
+	function verbsEover(x) {
+	document.getElementById("verbsEimg").src = "images/Verbs_E_select.png";  
+	}
+
+	function verbsEout(x) {
+	const cs = sessionStorage.getItem("cardset");
+	if(cs =="verbs_E")
+	{
+	document.getElementById("verbsEimg").src = "images/Verbs_E_select.png";  
+	}
+	else{
+	document.getElementById("verbsEimg").src = "images/Verbs_E.png"; 
+	}	
+	}
+	
+	function bingoOver(x) {
+	document.getElementById("bingo").src = "images/Bingo_over.png";
+	}
+
+	function bingoOut(x) {
+	document.getElementById("bingo").src = "images/Bingo.png";
+	}
+	
+	function guessOver(x) {
+	document.getElementById("guess").src = "images/Guess_the_Card_over.png";
+	}
+
+	function guessOut(x) {
+	document.getElementById("guess").src = "images/Guess_the_Card.png";
+	}	
+	
+	function memoryOver(x) {
+	document.getElementById("memory").src = "images/Memory_over.png";
+	}
+
+	function memoryOut(x) {
+	document.getElementById("memory").src = "images/Memory.png";
+	}
+	
+	function snapOver(x) {
+	document.getElementById("snap").src = "images/Snap_over.png";
+	}
+
+	function snapOut(x) {
+	document.getElementById("snap").src = "images/Snap.png";
+	}	
+	
+	function aboutOver(x) {
+	document.getElementById("about").src = "images/help_button_over.png";
+	}
+
+	function aboutOut(x) {
+	document.getElementById("about").src = "images/help_button.png";
+	}
+	
+	function settingOver(x) {
+	document.getElementById("setting").src = "images/settings_button_over.png";
+	}
+
+	function settingOut(x) {
+	document.getElementById("setting").src = "images/settings_button.png";
+	}
+	
+  </script>
+
+
+</body>
+
+</html>

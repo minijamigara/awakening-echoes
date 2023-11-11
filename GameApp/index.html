@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-MXDZBGF');</script>
+  <!-- End Google Tag Manager -->
+  <!-- Google tag (gtag.js) -->
+<!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-1VH2BCDVDJ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-1VH2BCDVDJ');
+</script> -->
+
+ <title>Multi-Modality Aphasia Therapy</title>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+<style>
+.container {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding-top: 56.25%; /* 16:9 Aspect Ratio */
+  bottom: 5vw;
+}
+
+.responsive-iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+body {
+  overflow: hidden; /* Hide scrollbars */
+      background-image: url('images/Bg.jpg');
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-color: #dde4f5;
+      background-position: center;
+
+}
+
+
+</style>
+
+	<script>
+		window.onresize = function(){
+			var w;
+			var h;
+
+				w = window.innerWidth;
+				h = window.innerHeight;
+
+				var r = 700/1280;
+
+				if(w * r > window.innerHeight){
+					w = Math.min(w, Math.ceil(w));
+				}
+				h = Math.floor(h);
+				console.log(w);
+				console.log(h);
+			document.getElementById("iframe").width  = h + "px";
+			document.getElementById("iframe").height = w + "px";
+			//document.getElementById("iframe").top = Math.floor((window.innerHeight - h)/2) + "px";
+			//document.getElementById("iframe").left = Math.floor((window.innerWidth - w)/2) + "px";
+			document.body.style.transform = 'scale(0.9)';
+		}
+		
+	</script>
+	
+	
+</head>
+<body onload="window.onresize();">
+
+<div class="container"> 
+  <iframe id="iframe" scrolling="no" class="responsive-iframe"  src="mainmenu.html"></iframe>
+</div>
+
+</body>
+</html>
+
+
+
